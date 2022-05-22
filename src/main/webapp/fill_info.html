@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Express Information</title>
+    <link rel="stylesheet" type="text/css" href="fill_info.css">
+</head>
+
+<body>
+<nav id='menu'>
+    <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+    <ul>
+        <li><a href='./fill_info.html'>Add Request</a></li>
+        <li><a href='./demo.html'>Search Request</a></li>
+        <li><a href='http://'>Update</a></li>
+        <li class="login"><a href='./login.html'>Log In</a></li>
+    </ul>
+</nav>
+<div class="logo"><img src="express.svg" alt="" width="150px" height="150px">
+    <h1 class="Title">
+        Express Information
+    </h1>
+</div>
+
+
+<div class="Information">
+    <form action="fillRequest.jsp">
+        <label>Sender Phone Number:</label>
+        <input type="text" value="Phone Number" onfocus="if(value=='Phone Number')value=''"
+               onblur="if(!value)value='Phone Number'" name="phone_sender">
+
+        <label>Receiver Phone Number:</label>
+        <input type="text" value="Phone Number" onfocus="if(value=='Phone Number')value=''"
+               onblur="if(!value)value='Phone Number'" name="phone_receive">
+
+        <label>Content:</label>
+        <input type="text" value="Content" onfocus="if(value=='Content')value=''" onblur="if(!value)value='Content'"
+               name="content">
+        <label>Delivery Company</label>
+        <input type="text" value="Delivery Company" onfocus="if(value=='Delivery Company')value=''"
+               onblur="if(!value)value='Delivery Company'" name="company">
+        <button>Submit</button>
+    </form>
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header-logo {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    /*align-items: center;*/
+    opacity: 80%;
+    top: 10px;
+}
+
+.auth-form-header {
+    position: relative;
+    text-align: center;
+    width: 380px;
+    height: 280px;
+    margin: auto;
+    top: 200px;
+    font-size: 1.2ch;
+}
+
+.auth-form-body {
+    padding: 16px;
+    position: relative;
+    left: 38%;
+    top: 40%;
+    width: 350px;
+    height: 350px;
+    border-radius: 10px;
+    border: 1px solid hsla(210, 18%, 87%, 1);
+    font-size: 16px;
+    background-color: #f6f8fa;
+
+}
+
+.auth-form-body input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    margin-top: 5px;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+.username {
+    width: 300px;
+    height: 30px;
+    border-radius: 0.5ch;
+    border: 0.5px solid black;
+}
+
+.phonenum {
+    width: 300px;
+    height: 30px;
+    border-radius: 0.5ch;
+    border: 0.5px solid black;
+}
+
+.address {
+    width: 300px;
+    height: 30px;
+    border-radius: 0.5ch;
+    border: 0.5px solid black;
+}
+
+.password {
+    width: 300px;
+    height: 30px;
+    border-radius: 0.5ch;
+    border: 0.5px solid black;
+}
+
+
+.submit-btn {
+    color: white;
+    margin-top: 15px;
+    align-items: flex-start;
+    width: 300px;
+    height: 30px;
+    background-color: rgb(53, 167, 78);
+    border-radius: 5px;
+    border: 0.3ch solid rgb(50, 157, 75);
+
+}
+
+.register {
+    position: absolute;
+    top: 88%;
+    left: 42%;
+}

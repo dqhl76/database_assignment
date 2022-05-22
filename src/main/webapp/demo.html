@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./demo.css">
+</head>
+<body>
+<nav id='menu'>
+    <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+    <ul>
+        <li><a href='./fill_info.html'>Add Request</a></li>
+        <li><a href='./demo.html'>Search Request</a></li>
+        <li><a href='http://'>Update</a></li>
+        <li class="login"><a href='./login.html'>Log In</a></li>
+    </ul>
+</nav>
+
+
+<div id="logo">
+    <img src=logo.svg class="logo">
+</div>
+
+<div class="search_bar">
+    <form action="goodsResult.jsp">
+        <input style="background-image:url('search.svg')" type="submit" class="icon">
+        <input type="text" class="search_box" value="Input your phone number or express id"
+               onfocus="if(value=='Input your phone number or express id')value=''"
+               onblur="if(!value)value='Input your phone number or express id'" name="expressID">
+    </form>
+
+</div>
+
+</body>
+</html>

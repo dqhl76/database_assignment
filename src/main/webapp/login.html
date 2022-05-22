@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./login.css">
+    <title>Document</title>
+</head>
+<body>
+<nav id='menu'>
+    <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+    <ul>
+        <li><a href='./fill_info.html'>Add Request</a></li>
+        <li><a href='./demo.html'>Search Request</a></li>
+        <li><a href='http://'>Update</a></li>
+        <li class="login"><a href='./login.html'>Log In</a></li>
+    </ul>
+</nav>
+<div class="header-logo" href="">
+    <img src="package.svg" width="190px">
+</div>
+
+
+<div class="auth-form-header">
+    <h1>Sign in to Express Web</h1>
+</div>
+
+<div class="auth-form-body">
+    <form action="">
+        <label for="login_filed">Username</label>
+        <input type="text" name="login" class="username" autocapitalize="off">
+
+        <label for="password_filed">Password</label>
+        <input type="password" name="password" class="password" autocomplete="current-password">
+
+        <input type="submit" name="commit" value="Sign in" class="submit-btn">
+    </form>
+</div>
+
+<p class="register">
+    New to Express Web?
+    <a href="/register.html">Create an account</a>.
+</p>
+</body>
+</html>
