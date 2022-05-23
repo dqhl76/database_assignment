@@ -57,6 +57,25 @@ public class ExpressDAO {
         return result;
     }
 
+    public static int addRoutine(String start_id, String end_id, String current_id, String next_id){
+        int result = 0;
+        try {
+            Connection conn = JDBCTool.getConnection();
+            String sql = "insert into Routine values (?, ?, ?, ?);";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, start_id);
+            ps.setString(2, end_id);
+            ps.setString(3, current_id);
+            ps.setString(4, next_id);
+            result = ps.executeUpdate();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public static int addHub(String name, String location) {
         int result = 0;
         try {

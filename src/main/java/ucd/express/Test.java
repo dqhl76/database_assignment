@@ -27,11 +27,11 @@ public class Test {
     }
 
     public static void main(String[] args) {
-
+        System.out.println(ExpressDAO.addRoutine("45069", "7764", "45069", "58634"));
 //        ExpressDAO.getSenderByNumber("16463");
 //            addReceiver();
 //            addSender();
-        addRequest();
+//        addRequest();
 //        Express e = ExpressDAO.getExpressByID("114514");
 //        System.out.println(e.toString());
 //        System.out.println(ExpressDAO.addSender("29443", "A", "11 Building", "100861", "114514"));
