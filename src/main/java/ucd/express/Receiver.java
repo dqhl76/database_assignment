@@ -7,16 +7,19 @@ public class Receiver {
     private int number;
     private String password;
 
+    private String hub;
+
     public Receiver() {
     }
 
-    public Receiver(int id, String name, String address, int number, String password) {
+    public Receiver(int id, String name, String address, int number, String password, String hub) {
         super();
         this.id = id;
         this.name = name;
         this.address = address;
         this.number = number;
         this.password = password;
+        this.hub = hub;
     }
 
     public int getId() {
@@ -37,5 +40,9 @@ public class Receiver {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getHub() {
+        return hub;
     }
 }

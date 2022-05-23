@@ -11,8 +11,19 @@ public class Test {
         System.out.println(ExpressDAO.addCompany("SHUNFENG", "95338", "email@sf-express.com"));
     }
 
+    private static void addSender() {
+        System.out.println(ExpressDAO.addSender(ExpressDAO.generateID(), "Cao Zhe", "Beijing ChaoYang GongDa 11 Building", "13012341234", "114514", "45069"));
+    }
+
+    private static void addReceiver() {
+        System.out.println(ExpressDAO.addReceiver(ExpressDAO.generateID(), "Mu Chen", "Hangzhou ChunJiang Road", "13843214321", "114514", "7764"));
+    }
 
     public static void main(String[] args) {
+
+//            addReceiver();
+//            addSender();
+
 //        Express e = ExpressDAO.getExpressByID("114514");
 //        System.out.println(e.toString());
 //        System.out.println(ExpressDAO.addSender("29443", "A", "11 Building", "100861", "114514"));

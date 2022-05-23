@@ -36,41 +36,20 @@ public class ExpressDAO {
         return result;
     }
 
-    public static int addReceiver(String id, String name, String address, String phone, String password) {
+    public static int addReceiver(String id, String name, String address, String phone, String password, String hub) {
         int result = 0;
         try {
             Connection conn = JDBCTool.getConnection();
-            String sql1 = " INSERT INTO Receiver VALUES (?, ?, ?, ?, ?);";
+            String sql1 = " INSERT INTO Receiver VALUES (?, ?, ?, ?, ?, ?);";
             PreparedStatement ps1 = conn.prepareStatement(sql1);
             ps1.setString(1, id);
             ps1.setString(2, name);
             ps1.setString(3, address);
             ps1.setString(4, phone);
             ps1.setString(5, password);
+            ps1.setString(6, hub);
             result = ps1.executeUpdate();
             ps1.close();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public static int addRequest(String id, String senderAd, String receiverAd, String senderID, String receiverID, String content, String company) {
-        int result = 0;
-        try {
-            Connection conn = JDBCTool.getConnection();
-            String sql = "insert into Express values (?, ?, ?, ?, ?, ?, ?);";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, id);
-            ps.setString(2, content);
-            ps.setString(3, senderAd);
-            ps.setString(4, receiverAd);
-            ps.setString(5, receiverID);
-            ps.setString(6, senderID);
-            ps.setString(7, company);
-            result = ps.executeUpdate();
-            ps.close();
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -95,6 +74,35 @@ public class ExpressDAO {
         }
         return result;
     }
+
+
+    public static int addRequest(String id, String senderAd, String receiverAd, String senderID, String receiverID, String content, String company, Timestamp timestamp) {
+        int result = 0;
+        try {
+            Connection conn = JDBCTool.getConnection();
+            Sender sender = getSenderByNumber(senderID);
+            Receiver receiver = getReceiverByNumber(receiverID);
+            String sql = "insert into Express values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, content);
+            ps.setString(3, senderAd);
+            ps.setString(4, receiverAd);
+            ps.setString(5, receiverID);
+            ps.setString(6, senderID);
+            ps.setString(7, company);
+            ps.setTimestamp(8, timestamp);
+            ps.setString(9, sender.getHub());
+            ps.setString(10, receiver.getHub());
+            result = ps.executeUpdate();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 
     public static int addCompany(String name, String phone, String email) {
         int result = 0;
@@ -130,8 +138,8 @@ public class ExpressDAO {
                 String address = rs.getString("address");
                 int phoneNumber = rs.getInt("phone_number");
                 String password = rs.getString("password");
-
-                Receiver e = new Receiver(id, name, address, phoneNumber, password);
+                String hub = rs.getString("hub_id");
+                Receiver e = new Receiver(id, name, address, phoneNumber, password, hub);
                 result = e;
             }
             rs.close();
@@ -159,8 +167,8 @@ public class ExpressDAO {
                 String address = rs.getString("address");
                 int phoneNumber = rs.getInt("phone_number");
                 String password = rs.getString("password");
-
-                Sender e = new Sender(id, name, address, phoneNumber, password);
+                String hub = rs.getString("hub_id");
+                Sender e = new Sender(id, name, address, phoneNumber, password, hub);
                 result = e;
             }
             rs.close();
