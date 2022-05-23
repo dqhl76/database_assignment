@@ -4,7 +4,7 @@ public class Receiver {
     private int id;
     private String name;
     private String address;
-    private int number;
+    private String number;
     private String password;
 
     private String hub;
@@ -12,7 +12,7 @@ public class Receiver {
     public Receiver() {
     }
 
-    public Receiver(int id, String name, String address, int number, String password, String hub) {
+    public Receiver(int id, String name, String address, String number, String password, String hub) {
         super();
         this.id = id;
         this.name = name;
@@ -34,7 +34,7 @@ public class Receiver {
         return address;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 

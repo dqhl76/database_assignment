@@ -127,7 +127,7 @@ public class ExpressDAO {
 
         try {
             Connection conn = JDBCTool.getConnection();
-            String sql = "SELECT * FROM Receiver WHERE phone_number = ?;";
+            String sql = "SELECT * FROM Receiver WHERE id = ?;";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, number);
             ResultSet rs = ps.executeQuery();
@@ -136,7 +136,7 @@ public class ExpressDAO {
                 int id = rs.getInt("id");
                 String name = rs.getString("full_name");
                 String address = rs.getString("address");
-                int phoneNumber = rs.getInt("phone_number");
+                String phoneNumber = rs.getString("phone_number");
                 String password = rs.getString("password");
                 String hub = rs.getString("hub_id");
                 Receiver e = new Receiver(id, name, address, phoneNumber, password, hub);
@@ -156,7 +156,7 @@ public class ExpressDAO {
 
         try {
             Connection conn = JDBCTool.getConnection();
-            String sql = "SELECT * FROM Sender WHERE phone_number = ?;";
+            String sql = "SELECT * FROM Sender WHERE id = ?;";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, number);
             ResultSet rs = ps.executeQuery();
@@ -165,7 +165,7 @@ public class ExpressDAO {
                 int id = rs.getInt("id");
                 String name = rs.getString("full_name");
                 String address = rs.getString("address");
-                int phoneNumber = rs.getInt("phone_number");
+                String phoneNumber = rs.getString("phone_number");
                 String password = rs.getString("password");
                 String hub = rs.getString("hub_id");
                 Sender e = new Sender(id, name, address, phoneNumber, password, hub);
