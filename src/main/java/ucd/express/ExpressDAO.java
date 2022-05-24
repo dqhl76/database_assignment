@@ -76,12 +76,27 @@ public class ExpressDAO {
         return result;
     }
 
-    public static int updateStatus(String e_id, String express_id) {
+    public static int updateStatus( String express_id, String hub_id, boolean is_receive) {
         /*
-         * 接收一个快递员的e_id，代表此快递员更新了这个快递express_id的状态
+         * 接收express_id,hub_id,is_receive并获取系统时间，代表此快递员此时更新了这个快递express_id的状态
          */
-        //@TODO
-        return 1;
+        int result = 0;
+        Timestamp time= new Timestamp(System.currentTimeMillis());
+        try {
+            Connection conn = JDBCTool.getConnection();
+            String sql = "insert into Status values (?, ?, ?, ?);";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, express_id);
+            ps.setString(2, hub_id);
+            ps.setTimestamp(3, time);
+            ps.setBoolean(4, is_receive);
+            result = ps.executeUpdate();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public static int addEmployee(String e_id, String hub_id, String c_name) {

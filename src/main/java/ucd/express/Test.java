@@ -36,7 +36,8 @@ public class Test {
     }
 
     public static void main(String[] args) {
-//        addRoutine();
+//        ExpressDAO.addRoutine("45069", "58634", "7764", "58634");
+        System.out.println(ExpressDAO.updateStatus("50358", "58634", true));
         //        ExpressDAO.getSenderByNumber("16463");
 //            addReceiver();
 //            addSender();
