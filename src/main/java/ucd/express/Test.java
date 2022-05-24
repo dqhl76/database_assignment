@@ -26,9 +26,18 @@ public class Test {
         System.out.println(ExpressDAO.addRequest(ExpressDAO.generateID(), "Beijing ChaoYang GongDa 11 Building", "Hangzhou ChunJiang Road", "16463", "29443", "A package", "SHUNFENG", timestamp));
     }
 
-    public static void main(String[] args) {
+    private static void addEmployee() {
+        System.out.println(ExpressDAO.addEmployee(ExpressDAO.generateID(), "45069", "SHUNFENG"));
+    }
+
+    private static void addRoutine() {
         System.out.println(ExpressDAO.addRoutine("45069", "7764", "45069", "58634"));
-//        ExpressDAO.getSenderByNumber("16463");
+        System.out.println(ExpressDAO.addRoutine("45069", "7764", "58634", "58634"));
+    }
+
+    public static void main(String[] args) {
+//        addRoutine();
+        //        ExpressDAO.getSenderByNumber("16463");
 //            addReceiver();
 //            addSender();
 //        addRequest();

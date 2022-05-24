@@ -76,6 +76,32 @@ public class ExpressDAO {
         return result;
     }
 
+    public static int updateStatus(String e_id, String express_id) {
+        /*
+         * 接收一个快递员的e_id，代表此快递员更新了这个快递express_id的状态
+         */
+        //@TODO
+        return 1;
+    }
+
+    public static int addEmployee(String e_id, String hub_id, String c_name) {
+        int result = 0;
+        try {
+            Connection conn = JDBCTool.getConnection();
+            String sql = "insert into Employee values (?, ?, ?);";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, e_id);
+            ps.setString(2, hub_id);
+            ps.setString(3, c_name);
+            result = ps.executeUpdate();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public static int addHub(String name, String location) {
         int result = 0;
         try {
@@ -116,6 +142,17 @@ public class ExpressDAO {
             result = ps.executeUpdate();
             ps.close();
             conn.close();
+
+            sql = "insert into Status values (?, ?, ?, ?);";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, sender.getHub());
+            ps.setTimestamp(3, timestamp);
+            ps.setBoolean(4, false);
+            result = ps.executeUpdate() * result;
+            ps.close();
+            conn.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -229,4 +266,31 @@ public class ExpressDAO {
         }
         return result;
     }
+
+    public static Employee getEmployeeByNumber(String number) {
+        Employee result = new Employee();
+
+        try {
+            Connection conn = JDBCTool.getConnection();
+            String sql = "SELECT * FROM Employee WHERE e_id = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, number);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String id = rs.getString("e_id");
+                String name = rs.getString("c_name");
+                String hub = rs.getString("hub_id");
+                Employee e = new Employee(id, hub, name);
+                result = e;
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 }
