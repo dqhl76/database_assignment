@@ -1,18 +1,18 @@
 package ucd.express;
 
 public class Express {
-    private int id;
+    private String id;
     private String content;
     private String pickup_address;
     private String ship_address;
-    private int receiver_id;
-    private int sender_id;
+    private String receiver_id;
+    private String sender_id;
     private String delivery_company;
 
     public Express() {
     }
 
-    public Express(int id, String content, String pickup_address, String ship_address, int receiver_id, int sender_id, String delivery_company) {
+    public Express(String id, String content, String pickup_address, String ship_address, String receiver_id, String sender_id, String delivery_company) {
         super();
         this.id = id;
         this.content = content;
@@ -23,7 +23,7 @@ public class Express {
         this.delivery_company = delivery_company;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -39,11 +39,11 @@ public class Express {
         return ship_address;
     }
 
-    public int getReceiver_id() {
+    public String getReceiver_id() {
         return receiver_id;
     }
 
-    public int getSender_id() {
+    public String getSender_id() {
         return sender_id;
     }
 

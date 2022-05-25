@@ -1,7 +1,7 @@
 package ucd.express;
 
 public class Receiver {
-    private int id;
+    private String id;
     private String name;
     private String address;
     private String number;
@@ -12,7 +12,7 @@ public class Receiver {
     public Receiver() {
     }
 
-    public Receiver(int id, String name, String address, String number, String password, String hub) {
+    public Receiver(String id, String name, String address, String number, String password, String hub) {
         super();
         this.id = id;
         this.name = name;
@@ -22,7 +22,7 @@ public class Receiver {
         this.hub = hub;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

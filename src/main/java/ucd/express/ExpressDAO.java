@@ -204,7 +204,7 @@ public class ExpressDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
+                String id = rs.getString("id");
                 String name = rs.getString("full_name");
                 String address = rs.getString("address");
                 String phoneNumber = rs.getString("phone_number");
@@ -233,7 +233,7 @@ public class ExpressDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
+                String id = rs.getString("id");
                 String name = rs.getString("full_name");
                 String address = rs.getString("address");
                 String phoneNumber = rs.getString("phone_number");
@@ -262,12 +262,12 @@ public class ExpressDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
+                String id = rs.getString("id");
                 String content = rs.getString("content");
                 String pickup_address = rs.getString("pickup_address");
                 String ship_address = rs.getString("ship_address");
-                int receiver_id = rs.getInt("receiver_id");
-                int sender_id = rs.getInt("sender_id");
+                String receiver_id = rs.getString("receiver_id");
+                String sender_id = rs.getString("sender_id");
                 String delivery_company = rs.getString("delivery_company");
 
                 Express e = new Express(id, content, pickup_address, ship_address, receiver_id, sender_id, delivery_company);
