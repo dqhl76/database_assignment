@@ -32,9 +32,15 @@
         String addressReceiver = receiver.getAddress();
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        int flag = ExpressDAO.addRequest(uuid, addressSender, addressReceiver, sender.getId(), receiver.getId(), content, company, timestamp);
+        int flag = 3;
+        if (phone_sender != null){
+            flag = ExpressDAO.addRequest(uuid, addressSender, addressReceiver, sender.getId(), receiver.getId(), content, company, timestamp);
+        }
+
         if (flag == 1)
             out.println("Create fill successfully");
+        else if (flag == 3)
+            out.println("Please fill in the form");
         else
             out.println("Something wrong");
     %>

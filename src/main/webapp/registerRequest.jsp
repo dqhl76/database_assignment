@@ -19,11 +19,12 @@
         String username = request.getParameter("login");
         String phone_num = request.getParameter("phone");
         String address = request.getParameter("address");
+        String hub = request.getParameter("hub");
         String password = request.getParameter("password");
         String uuid = ExpressDAO.generateID();
         if (username != null) {
-            ExpressDAO.addReceiver(uuid, username, address, phone_num, password);
-            ExpressDAO.addSender(uuid, username, address, phone_num, password);
+            ExpressDAO.addReceiver(uuid, username, address, phone_num, password, hub);
+            ExpressDAO.addSender(uuid, username, address, phone_num, password, hub);
         }
 
 //        out.println("Create account successfully");

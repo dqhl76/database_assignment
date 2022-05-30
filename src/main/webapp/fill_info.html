@@ -26,20 +26,20 @@
 <div class="Information">
     <form action="fillRequest.jsp">
         <label>Sender Phone Number:</label>
-        <input type="text" value="Phone Number" onfocus="if(value=='Phone Number')value=''"
+        <input type="text" value="Phone Number" class="inputBox" onfocus="if(value=='Phone Number')value=''"
                onblur="if(!value)value='Phone Number'" name="phone_sender">
 
         <label>Receiver Phone Number:</label>
-        <input type="text" value="Phone Number" onfocus="if(value=='Phone Number')value=''"
+        <input type="text" value="Phone Number" class="inputBox" onfocus="if(value=='Phone Number')value=''"
                onblur="if(!value)value='Phone Number'" name="phone_receive">
 
         <label>Content:</label>
-        <input type="text" value="Content" onfocus="if(value=='Content')value=''" onblur="if(!value)value='Content'"
+        <input type="text" value="Content" class="inputBox" onfocus="if(value=='Content')value=''" onblur="if(!value)value='Content'"
                name="content">
         <label>Delivery Company</label>
-        <input type="text" value="Delivery Company" onfocus="if(value=='Delivery Company')value=''"
+        <input type="text" value="Delivery Company" class="inputBox" onfocus="if(value=='Delivery Company')value=''"
                onblur="if(!value)value='Delivery Company'" name="company">
-        <button>Submit</button>
+        <input type="submit" class="button">Submit
     </form>
 
 </div>

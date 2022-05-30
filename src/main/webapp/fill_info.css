@@ -203,7 +203,7 @@ img.logo {
 
 }
 
-.Information input {
+.inputBox {
     position: relative;
     font-style: italic;
 
@@ -233,7 +233,7 @@ img.logo {
 
 }
 
-.Information button {
+.button {
     position: absolute;
     left: 30%;
     top: 88%;
