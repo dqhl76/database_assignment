@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="ucd.express.ExpressDAO" %>
 <%@ page import="ucd.express.Express" %>
+<%@ page import="ucd.express.Sender" %>
 
 <html>
 <head>
@@ -20,9 +21,20 @@
 <div class="searchResult">
     <%
         String eid = request.getParameter("expressID");
-        if (eid != null) {
+        if (eid.length() > 7) {
+            Sender sender = ExpressDAO.getSenderByPhone(eid);
+            Express[] expresses = ExpressDAO.getExpressBySenderId(sender.getId());
+            for (int i = 0; i < expresses.length; ++i) {
+                out.println(expresses[i].toString());
+            }
+            if (expresses.length == 0) {
+                out.println("Please enter a valid express id or phone number.");
+            }
+        } else if (eid != null) {
             Express e = ExpressDAO.getExpressByID(eid);
             out.println(e.toString());
+        } else {
+            out.println("Please enter a valid express id or phone number.");
         }
     %>
 </div>

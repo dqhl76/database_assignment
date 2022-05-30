@@ -158,6 +158,7 @@ public class ExpressDAO {
             ps.close();
             conn.close();
 
+            conn = JDBCTool.getConnection();
             sql = "insert into Status values (?, ?, ?, ?);";
             ps = conn.prepareStatement(sql);
             ps.setString(1, id);
@@ -222,6 +223,35 @@ public class ExpressDAO {
         return result;
     }
 
+    public static Sender getSenderByPhone(String number) {
+        Sender result = new Sender();
+
+        try {
+            Connection conn = JDBCTool.getConnection();
+            String sql = "SELECT * FROM Sender WHERE phone_number = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, number);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String name = rs.getString("full_name");
+                String address = rs.getString("address");
+                String phoneNumber = rs.getString("phone_number");
+                String password = rs.getString("password");
+                String hub = rs.getString("hub_id");
+                Sender e = new Sender(id, name, address, phoneNumber, password, hub);
+                result = e;
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public static Sender getSenderByNumber(String number) {
         Sender result = new Sender();
 
@@ -241,6 +271,43 @@ public class ExpressDAO {
                 String hub = rs.getString("hub_id");
                 Sender e = new Sender(id, name, address, phoneNumber, password, hub);
                 result = e;
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static Express[] getExpressBySenderId(String sid) {
+        Express result[] = new Express[0];
+        int cnt = 0;
+        try {
+            Connection conn = JDBCTool.getConnection();
+            String sql = "SELECT * FROM Express WHERE sender_id = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, sid);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String content = rs.getString("content");
+                String pickup_address = rs.getString("pickup_address");
+                String ship_address = rs.getString("ship_address");
+                String receiver_id = rs.getString("receiver_id");
+                String sender_id = rs.getString("sender_id");
+                String delivery_company = rs.getString("delivery_company");
+
+                Express e = new Express(id, content, pickup_address, ship_address, receiver_id, sender_id, delivery_company);
+                cnt++;
+                Express newResult[] = new Express[cnt];
+                for (int i = 0; i < cnt - 1; ++i) {
+                    newResult[i] = result[i];
+                }
+                newResult[cnt - 1] = e;
+                result = newResult;
             }
             rs.close();
             ps.close();

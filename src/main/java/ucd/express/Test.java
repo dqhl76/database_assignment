@@ -23,7 +23,7 @@ public class Test {
 
     private static void addRequest() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        System.out.println(ExpressDAO.addRequest(ExpressDAO.generateID(), "Beijing ChaoYang GongDa 11 Building", "Hangzhou ChunJiang Road", "16463", "29443", "A package", "SHUNFENG", timestamp));
+        System.out.println(ExpressDAO.addRequest(ExpressDAO.generateID(), "Beijing HaiDian Peking University", "Hangzhou ChunJiang Road", "16463", "29443", "Another package", "SHUNFENG", timestamp));
     }
 
     private static void addEmployee() {
@@ -36,8 +36,11 @@ public class Test {
     }
 
     public static void main(String[] args) {
+//        addRequest();
 //        ExpressDAO.addRoutine("45069", "58634", "7764", "58634");
-        System.out.println(ExpressDAO.updateStatus("50358", "58634", true));
+        System.out.println(ExpressDAO.getExpressBySenderId("16463").length);
+
+//        System.out.println(ExpressDAO.updateStatus("50358", "58634", true));
         //        ExpressDAO.getSenderByNumber("16463");
 //            addReceiver();
 //            addSender();
