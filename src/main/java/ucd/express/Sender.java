@@ -45,4 +45,8 @@ public class Sender {
     public String getHub() {
         return hub;
     }
+
+    public String toString() {
+        return getId() + getName() + getAddress() + getNumber() + getPassword() + getHub();
+    }
 }

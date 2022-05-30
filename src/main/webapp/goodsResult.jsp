@@ -20,12 +20,13 @@
 <%--    <a href="demo.html">Back</a>--%>
 <div class="searchResult">
     <%
+        out.println("<ul>");
         String eid = request.getParameter("expressID");
         if (eid.length() > 7) {
             Sender sender = ExpressDAO.getSenderByPhone(eid);
             Express[] expresses = ExpressDAO.getExpressBySenderId(sender.getId());
             for (int i = 0; i < expresses.length; ++i) {
-                out.println(expresses[i].toString());
+                out.println("<li>" + expresses[i].toString() + "</li>");
             }
             if (expresses.length == 0) {
                 out.println("Please enter a valid express id or phone number.");
@@ -36,6 +37,8 @@
         } else {
             out.println("Please enter a valid express id or phone number.");
         }
+
+        out.println("</ul>");
     %>
 </div>
 </body>

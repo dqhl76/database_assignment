@@ -1,7 +1,8 @@
 <%@ page import="ucd.express.ExpressDAO" %>
 <%@ page import="ucd.express.Receiver" %>
 <%@ page import="ucd.express.Sender" %>
-<%@ page import="ucd.express.Express" %><%--
+<%@ page import="ucd.express.Express" %>
+<%@ page import="java.sql.Timestamp" %><%--
   Created by IntelliJ IDEA.
   User: lqyue
   Date: 2022/5/7
@@ -24,17 +25,18 @@
         String company = request.getParameter("company");
         String uuid = ExpressDAO.generateID();
 
-        Sender sender = ExpressDAO.getSenderByNumber(phone_sender);
-        Receiver receiver = ExpressDAO.getReceiverByNumber(phone_receiver);
+        Sender sender = ExpressDAO.getSenderByPhone(phone_sender);
+        Receiver receiver = ExpressDAO.getReceiverByPhone(phone_receiver);
 
         String addressSender = sender.getAddress();
         String addressReceiver = receiver.getAddress();
-        Integer idSender = sender.getId();
-        Integer idReceiver = receiver.getId();
 
-        Boolean flag = ExpressDAO.addRequest(uuid, addressSender, addressReceiver, idSender.toString(), idReceiver.toString(), content, company);
-//        if(flag)
-//            out.println("Create fill successfully");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        int flag = ExpressDAO.addRequest(uuid, addressSender, addressReceiver, sender.getId(), receiver.getId(), content, company, timestamp);
+        if (flag == 1)
+            out.println("Create fill successfully");
+        else
+            out.println("Something wrong");
     %>
 </div>
 <%--<a href="fillRequest.jsp">Back</a>--%>

@@ -142,12 +142,14 @@ public class ExpressDAO {
             Connection conn = JDBCTool.getConnection();
             Sender sender = getSenderByNumber(senderID);
             Receiver receiver = getReceiverByNumber(receiverID);
+            String pickup_address = sender.getAddress();
+            String ship_address = receiver.getAddress();
             String sql = "insert into Express values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, id);
             ps.setString(2, content);
-            ps.setString(3, senderAd);
-            ps.setString(4, receiverAd);
+            ps.setString(3, pickup_address);
+            ps.setString(4, ship_address);
             ps.setString(5, receiverID);
             ps.setString(6, senderID);
             ps.setString(7, company);
@@ -157,7 +159,6 @@ public class ExpressDAO {
             result = ps.executeUpdate();
             ps.close();
             conn.close();
-
             conn = JDBCTool.getConnection();
             sql = "insert into Status values (?, ?, ?, ?);";
             ps = conn.prepareStatement(sql);
@@ -241,6 +242,35 @@ public class ExpressDAO {
                 String password = rs.getString("password");
                 String hub = rs.getString("hub_id");
                 Sender e = new Sender(id, name, address, phoneNumber, password, hub);
+                result = e;
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static Receiver getReceiverByPhone(String number) {
+        Receiver result = new Receiver();
+
+        try {
+            Connection conn = JDBCTool.getConnection();
+            String sql = "SELECT * FROM Receiver WHERE phone_number = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, number);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String name = rs.getString("full_name");
+                String address = rs.getString("address");
+                String phoneNumber = rs.getString("phone_number");
+                String password = rs.getString("password");
+                String hub = rs.getString("hub_id");
+                Receiver e = new Receiver(id, name, address, phoneNumber, password, hub);
                 result = e;
             }
             rs.close();
