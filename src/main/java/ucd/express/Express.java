@@ -9,10 +9,12 @@ public class Express {
     private String sender_id;
     private String delivery_company;
 
+    private String hub_id;
+
     public Express() {
     }
 
-    public Express(String id, String content, String pickup_address, String ship_address, String receiver_id, String sender_id, String delivery_company) {
+    public Express(String id, String content, String pickup_address, String ship_address, String receiver_id, String sender_id, String delivery_company, String hub_id) {
         super();
         this.id = id;
         this.content = content;
@@ -21,7 +23,11 @@ public class Express {
         this.receiver_id = receiver_id;
         this.sender_id = sender_id;
         this.delivery_company = delivery_company;
+//        This hub_id means end hub id.
+        this.hub_id = hub_id;
     }
+
+    public String getHub_id() { return hub_id; }
 
     public String getId() {
         return id;

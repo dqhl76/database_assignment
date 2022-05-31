@@ -76,10 +76,13 @@ public class ExpressDAO {
         return result;
     }
 
-    public static int updateStatus( String express_id, String hub_id, boolean is_receive) {
+    public static int updateStatus( String express_id, String hub_id) {
         /*
          * 接收express_id,hub_id,is_receive并获取系统时间，代表此快递员此时更新了这个快递express_id的状态
          */
+        Express exp = getExpressByID(express_id);
+        String desti = exp.getHub_id();
+        boolean is_receive = desti.equals(hub_id);
         int result = 0;
         Timestamp time= new Timestamp(System.currentTimeMillis());
         try {
@@ -329,8 +332,9 @@ public class ExpressDAO {
                 String receiver_id = rs.getString("receiver_id");
                 String sender_id = rs.getString("sender_id");
                 String delivery_company = rs.getString("delivery_company");
+                String end_hub_id = rs.getString("end_hub_id");
 
-                Express e = new Express(id, content, pickup_address, ship_address, receiver_id, sender_id, delivery_company);
+                Express e = new Express(id, content, pickup_address, ship_address, receiver_id, sender_id, delivery_company, end_hub_id);
                 cnt++;
                 Express newResult[] = new Express[cnt];
                 for (int i = 0; i < cnt - 1; ++i) {
@@ -366,8 +370,9 @@ public class ExpressDAO {
                 String receiver_id = rs.getString("receiver_id");
                 String sender_id = rs.getString("sender_id");
                 String delivery_company = rs.getString("delivery_company");
+                String end_hub_id = rs.getString("end_hub_id");
 
-                Express e = new Express(id, content, pickup_address, ship_address, receiver_id, sender_id, delivery_company);
+                Express e = new Express(id, content, pickup_address, ship_address, receiver_id, sender_id, delivery_company, end_hub_id);
                 result = e;
             }
             rs.close();

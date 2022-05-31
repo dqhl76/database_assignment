@@ -38,13 +38,14 @@ public class Test {
     public static void main(String[] args) {
 //        addRequest();
 //        ExpressDAO.addRoutine("45069", "58634", "7764", "58634");
-        System.out.println(ExpressDAO.getExpressBySenderId("16463").length);
+//        System.out.println(ExpressDAO.getExpressBySenderId("16463").length);
 
 //        System.out.println(ExpressDAO.updateStatus("50358", "58634", true));
         //        ExpressDAO.getSenderByNumber("16463");
 //            addReceiver();
 //            addSender();
 //        addRequest();
+        System.out.println(ExpressDAO.updateStatus("13049", "7764"));
 //        Express e = ExpressDAO.getExpressByID("114514");
 //        System.out.println(e.toString());
 //        System.out.println(ExpressDAO.addSender("29443", "A", "11 Building", "100861", "114514"));
