@@ -4,6 +4,29 @@ import java.sql.*;
 import java.util.UUID;
 
 public class ExpressDAO {
+
+    public static Employee login(String em_id, String password){
+        Employee result = null;
+        try{
+            Connection conn = JDBCTool.getConnection();
+            String sql = "SELECT * FROM Employee WHERE e_id = ? AND password = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, em_id);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                String e_id = rs.getString("e_id");
+                String hub_id = rs.getString("hub_id");
+                String c_name = rs.getString("c_name");
+                String password1 = rs.getString("password");
+                result = new Employee(e_id, hub_id, c_name);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
     public static String generateID() {
         StringBuffer shortBuffer = new StringBuffer();
         String uuid = UUID.randomUUID().toString().replace("-", "");

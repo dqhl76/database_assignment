@@ -45,7 +45,8 @@ public class Test {
 //            addReceiver();
 //            addSender();
 //        addRequest();
-        System.out.println(ExpressDAO.updateStatus("13049", "7764"));
+        Employee r = ExpressDAO.login("65171", "123456");
+        System.out.println(r.getC_name());
 //        Express e = ExpressDAO.getExpressByID("114514");
 //        System.out.println(e.toString());
 //        System.out.println(ExpressDAO.addSender("29443", "A", "11 Building", "100861", "114514"));
