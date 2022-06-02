@@ -25,7 +25,7 @@
             Sender sender = ExpressDAO.getSenderByPhone(eid);
             Express[] expresses = ExpressDAO.getExpressBySenderId(sender.getId());
             for (int i = 0; i < expresses.length; ++i) {
-                out.println("<li>" + expresses[i].toString());
+                out.println("<li class = 'info'>" + expresses[i].toString());
                 out.println("<ol>");
                 ArrayList<Status> statuses = ExpressDAO.getStatusByExpressId(expresses[i].getId());
                 for (int j = 0; j < statuses.size(); ++j) {

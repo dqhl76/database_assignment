@@ -232,8 +232,42 @@ img.othernav {
 }
 
 .searchResult {
-    width: 552px;
-    height: 42px;
+    position: absolute;
+    width: 60%;
+    height: 70%;
+    left: 20%;
+    top: 50%;
     margin: 0 auto;
     text-align: center;
 }
+.searchResult ul {
+    list-style-type: none;
+}
+
+.searchResult ul li {
+    /*background-color: #61C0FF;*/
+    font-size: medium;
+    font-style: italic;
+    font-family: "Arial Narrow";
+    /*border-top: 1px solid black;*/
+    color: white;
+}
+.info{
+    /*border-top: 3px solid black;*/
+    background-image: linear-gradient(to bottom, #399BCC, #61C0FF);
+
+}
+.searchResult ul li ol{
+    list-style-type: none;
+}
+.searchResult ul li ol li{
+    position: relative;
+    width: 100%;
+
+}
+/*.searchResult ul li ol li p{*/
+/*    position: relative;*/
+/*    width: 33%;*/
+/*    float: left;*/
+
+/*}*/
