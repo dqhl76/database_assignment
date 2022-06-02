@@ -1,7 +1,7 @@
 package ucd.express;
 
 import java.sql.*;
-import java.util.UUID;
+import java.util.*;
 
 public class ExpressDAO {
 
@@ -219,6 +219,63 @@ public class ExpressDAO {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public static Hub getHubById(String hub_id) {
+        Hub hub = new Hub();
+        try {
+            Connection conn = JDBCTool.getConnection();
+            String sql = "SELECT * FROM Hub WHERE id = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, hub_id);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String name = rs.getString("name");
+                String location = rs.getString("location");
+                hub = new Hub(id, name, location);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return hub;
+    }
+
+    public static ArrayList<Status> getStatusByExpressId(String express_id) {
+        ArrayList<Status> statuses = new ArrayList<>();
+        Comparator c = new Comparator<Status>() {
+            @Override
+            public int compare(Status o1, Status o2) {
+                return -o1.getTime().compareTo(o2.getTime());
+            }
+        };
+        try {
+            Connection conn = JDBCTool.getConnection();
+            String sql = "SELECT * FROM Status WHERE express_id = ?;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, express_id);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String hub_id = rs.getString("hub_id");
+                Timestamp timestamp = rs.getTimestamp("time");
+                Integer is_receive = rs.getInt("is_receive");
+                Status status = new Status(express_id, hub_id, timestamp, is_receive);
+                statuses.add(status);
+
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Collections.sort(statuses, c);
+        return statuses;
     }
 
     public static Receiver getReceiverByNumber(String number) {
