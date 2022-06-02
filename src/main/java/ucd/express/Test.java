@@ -1,6 +1,7 @@
 package ucd.express;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class Test {
     private static void addHub() {
@@ -36,6 +37,13 @@ public class Test {
     }
 
     public static void main(String[] args) {
+        ArrayList<Status> statuses = ExpressDAO.getStatusByExpressId("13049");
+        System.out.println(statuses.size());
+        System.out.println(statuses.get(0).time.toString());
+
+        System.out.println(statuses.get(1).time.toString());
+
+        System.out.println(ExpressDAO.getHubById("45069").getLocation());
 //        addRequest();
 //        ExpressDAO.addRoutine("45069", "58634", "7764", "58634");
 //        System.out.println(ExpressDAO.getExpressBySenderId("16463").length);
@@ -45,8 +53,8 @@ public class Test {
 //            addReceiver();
 //            addSender();
 //        addRequest();
-        Employee r = ExpressDAO.login("65171", "123456");
-        System.out.println(r.getC_name());
+//        Employee r = ExpressDAO.login("65171", "123456");
+//        System.out.println(r.getC_name());
 //        Express e = ExpressDAO.getExpressByID("114514");
 //        System.out.println(e.toString());
 //        System.out.println(ExpressDAO.addSender("29443", "A", "11 Building", "100861", "114514"));

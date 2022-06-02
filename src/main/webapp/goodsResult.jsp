@@ -6,9 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="ucd.express.ExpressDAO" %>
-<%@ page import="ucd.express.Express" %>
-<%@ page import="ucd.express.Sender" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="ucd.express.*" %>
 
 <html>
 <head>
@@ -26,7 +25,15 @@
             Sender sender = ExpressDAO.getSenderByPhone(eid);
             Express[] expresses = ExpressDAO.getExpressBySenderId(sender.getId());
             for (int i = 0; i < expresses.length; ++i) {
-                out.println("<li>" + expresses[i].toString() + "</li>");
+                out.println("<li>" + expresses[i].toString());
+                out.println("<ol>");
+                ArrayList<Status> statuses = ExpressDAO.getStatusByExpressId(expresses[i].getId());
+                for (int j = 0; j < statuses.size(); ++j) {
+                    Hub hub = ExpressDAO.getHubById(statuses.get(j).getHub_id());
+                    out.println("<li>" + "<p>" + hub.getName() + "</p><p> " + hub.getLocation() + "</p><p> " + statuses.get(j).getTime() + "</p> </li>");
+                }
+                out.println("</ol>");
+                out.println("</li>");
             }
             if (expresses.length == 0) {
                 out.println("Please enter a valid express id or phone number.");
