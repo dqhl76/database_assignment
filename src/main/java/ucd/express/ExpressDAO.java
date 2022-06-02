@@ -183,6 +183,7 @@ public class ExpressDAO {
             ps.setString(9, sender.getHub());
             ps.setString(10, receiver.getHub());
             result = ps.executeUpdate();
+            System.out.println(result);
             ps.close();
             conn.close();
             conn = JDBCTool.getConnection();
@@ -193,11 +194,13 @@ public class ExpressDAO {
             ps.setTimestamp(3, timestamp);
             ps.setBoolean(4, false);
             result = ps.executeUpdate() * result;
+            System.out.println(result);
             ps.close();
             conn.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
+            result = 0;
         }
         return result;
     }

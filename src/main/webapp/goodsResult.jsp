@@ -40,7 +40,20 @@
             }
         } else if (eid != null) {
             Express e = ExpressDAO.getExpressByID(eid);
-            out.println(e.toString());
+            if(e.getHub_id() == null){
+                out.println("Wrong express id or phone number.");
+            } else {
+                out.println("<li class = 'info'>" + e.toString());
+                out.println("<ol>");
+                ArrayList<Status> statuses = ExpressDAO.getStatusByExpressId(e.getId());
+                for (int j = 0; j < statuses.size(); ++j) {
+                    Hub hub = ExpressDAO.getHubById(statuses.get(j).getHub_id());
+                    out.println("<li>" + "<p>" + hub.getName() + "</p><p> " + hub.getLocation() + "</p><p> " + statuses.get(j).getTime() + "</p> </li>");
+                }
+                out.println("</ol>");
+                out.println("</li>");
+            }
+
         } else {
             out.println("Please enter a valid express id or phone number.");
         }
