@@ -50,9 +50,6 @@ public class Test {
 
 //        System.out.println(ExpressDAO.updateStatus("50358", "58634", true));
         //        ExpressDAO.getSenderByNumber("16463");
-//            addReceiver();
-//            addSender();
-//        addRequest();
 //        Employee r = ExpressDAO.login("65171", "123456");
 //        System.out.println(r.getC_name());
 //        Express e = ExpressDAO.getExpressByID("114514");
