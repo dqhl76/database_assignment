@@ -12,11 +12,11 @@
 <html>
 <head>
     <title>Result</title>
-    <link rel="stylesheet" type="text/css" href="./demo.css">
+    <link rel="stylesheet" type="text/css" href="search.css">
 </head>
 <body>
-<%@include file="demo.html" %>
-<%--    <a href="demo.html">Back</a>--%>
+<%@include file="search.html" %>
+<%--    <a href="search.html">Back</a>--%>
 <div class="searchResult">
     <%
         out.println("<ul>");
