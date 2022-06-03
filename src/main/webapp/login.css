@@ -171,23 +171,24 @@
 }
 
 .auth-form-header {
-    position: relative;
+    position: absolute;
     text-align: center;
-    width: 380px;
-    height: 300px;
+    width: 40%;
+    height: 10%;
+    left: 30%;
     margin: auto;
-    top: 200px;
+    top: 35%;
     font-size: 1.2ch;
 
 }
 
 .auth-form-body {
     padding: 16px;
-    position: relative;
+    position: absolute;
     left: 38%;
-    top: 40%;
-    width: 350px;
-    height: 220px;
+    top: 51%;
+    width: 24%;
+    height: 25%;
     border-radius: 10px;
     border: 1px solid hsla(210, 18%, 87%, 1);
     font-size: 16px;
@@ -238,16 +239,26 @@ label {
 }
 
 .register {
-    position: relative;
-    top: 80%;
+    position: absolute;
+    top: 77%;
     left: 39%;
 }
-.correct{
+.correct {
+    position: absolute;
+    top: 43%;
+    height: 1%;
+    left: 45%;
+    width: 10%;
     font-size: medium;
     text-align: center;
     color: green;
 }
-.wrong{
+.wrong {
+    position: absolute;
+    top: 43%;
+    height: 1%;
+    left: 45%;
+    width: 10%;
     font-size: medium;
     text-align: center;
     color: red;
