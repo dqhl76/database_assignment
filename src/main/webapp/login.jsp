@@ -21,9 +21,9 @@
 
         if (em != null){
             session.setAttribute("Employee", em);
-            out.println("Welcome: " + em.getE_id());
+            out.println("<p class= 'correct'>Welcome: " + em.getE_id() + "</p>");
         } else {
-            out.println("Login Failed");
+            out.println("<p class = 'wrong'>Login Failed </p>");
         }
     %>
 </body>
