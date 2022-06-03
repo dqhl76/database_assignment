@@ -174,7 +174,7 @@
     position: relative;
     text-align: center;
     width: 380px;
-    height: 280px;
+    height: 4px;
     margin: auto;
     top: 200px;
     font-size: 1.2ch;
@@ -241,4 +241,14 @@ label {
     position: relative;
     top: 80%;
     left: 39%;
+}
+.correct{
+    font-size: medium;
+    text-align: center;
+    color: green;
+}
+.wrong{
+    font-size: medium;
+    text-align: center;
+    color: red;
 }
