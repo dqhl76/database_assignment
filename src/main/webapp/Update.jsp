@@ -28,15 +28,17 @@
 //            If ID does not exist, an error will happen.
             int test = ExpressDAO.updateStatus(ex_id, em.getHub_id());
             if (test == 1){
-                out.println("Update Successfully!");
+                out.println("<h4 class = 'correct'>Update Successfully!</h4>");
             } else {
-                out.println("Some problems happened");
+                out.println("<h3 class = 'wrong'> Some problems happened </h3>");
             }
             ArrayList<Status> statuses = ExpressDAO.getStatusByExpressId(ex_id);
+            out.println("<ol class='updateList'>");
             for (int j = 0; j < statuses.size(); j++) {
                 Hub hub = ExpressDAO.getHubById(statuses.get(j).getHub_id());
-                out.println("<li>" + "<p>" + hub.getName() + "</p><p> " + hub.getLocation() + "</p><p> " + statuses.get(j).getTime() + "</p> </li>");
+                out.println("<li >" + "<p>" + hub.getName() + "</p><p> " + hub.getLocation() + "</p><p> " + statuses.get(j).getTime() + "</p> </li>");
             }
+            out.println("</ol>");
         }
     %>
 
