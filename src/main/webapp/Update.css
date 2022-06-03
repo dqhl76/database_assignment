@@ -227,3 +227,47 @@
 
 
 }
+.wrong{
+    text-align: center;
+    color: red;
+    font-size: medium;
+}
+.correct{
+    text-align: center;
+    color: green;
+    font-size: medium;
+}
+.updateList{
+    list-style-type: none;
+    position: absolute;
+    width: 50%;
+    left: 25%;
+    top: 25%;
+    height: 70%;
+}
+/*.updateList{*/
+/*    position: absolute;*/
+/*    width: 50%;*/
+/*    left: 25%;*/
+/*    top: 30%;*/
+/*    list-style-type: none;*/
+/*}*/
+.updateList li{
+    position: relative;
+    width: 100% ;
+    height: 10%;
+
+    list-style-type: none;
+    text-align: center;
+    margin-top: 5%;
+    border-bottom: 2px solid black;
+    /*background-image: linear-gradient(to bottom,#399BCC, #61C0FF);*/
+}
+.updateList li p{
+    position: relative;
+    font-family: "Arial Narrow";
+    font-style: italic;
+    width: 33%;
+    height: 100%;
+    float: left;
+}
