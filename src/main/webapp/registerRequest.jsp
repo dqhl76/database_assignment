@@ -26,7 +26,7 @@
             ExpressDAO.addReceiver(uuid, username, address, phone_num, password, hub);
             ExpressDAO.addSender(uuid, username, address, phone_num, password, hub);
         }
-        response.sendRedirect("./login.html");
+        response.sendRedirect("./fill_info.html");
         out.println("Create account successfully");
     %>
 </div>

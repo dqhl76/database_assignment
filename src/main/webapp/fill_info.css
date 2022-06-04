@@ -265,3 +265,8 @@ img.logo {
     color: #000000 !important;
     background: #468CCF;
 }
+
+.firstTime {
+    position: absolute;
+    top: 100%;
+}
