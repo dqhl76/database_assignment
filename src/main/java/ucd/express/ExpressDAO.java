@@ -41,6 +41,9 @@ public class ExpressDAO {
     public static int addSender(String id, String name, String address, String phone, String password, String hub) {
         int result = 0;
         try {
+            if (id == null || name == null || address == null || phone == null || password == null || hub == null) {
+                return 0;
+            }
             Connection conn = JDBCTool.getConnection();
             String sql1 = " INSERT INTO Sender VALUES (?, ?, ?, ?, ?, ?);";
             PreparedStatement ps1 = conn.prepareStatement(sql1);
@@ -62,6 +65,9 @@ public class ExpressDAO {
     public static int addReceiver(String id, String name, String address, String phone, String password, String hub) {
         int result = 0;
         try {
+            if (id == null || name == null || address == null || phone == null || password == null || hub == null) {
+                return 0;
+            }
             Connection conn = JDBCTool.getConnection();
             String sql1 = " INSERT INTO Receiver VALUES (?, ?, ?, ?, ?, ?);";
             PreparedStatement ps1 = conn.prepareStatement(sql1);
@@ -83,6 +89,9 @@ public class ExpressDAO {
     public static int addRoutine(String start_id, String end_id, String current_id, String next_id){
         int result = 0;
         try {
+            if (start_id == null || end_id == null || current_id == null || next_id == null) {
+                return 0;
+            }
             Connection conn = JDBCTool.getConnection();
             String sql = "insert into Routine values (?, ?, ?, ?);";
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -109,6 +118,9 @@ public class ExpressDAO {
         int result = 0;
         Timestamp time= new Timestamp(System.currentTimeMillis());
         try {
+            if (express_id == null || hub_id == null || time == null) {
+                return 0;
+            }
             Connection conn = JDBCTool.getConnection();
             String sql = "insert into Status values (?, ?, ?, ?);";
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -128,6 +140,9 @@ public class ExpressDAO {
     public static int addEmployee(String e_id, String hub_id, String c_name) {
         int result = 0;
         try {
+            if (e_id == null || hub_id == null || c_name == null) {
+                return 0;
+            }
             Connection conn = JDBCTool.getConnection();
             String sql = "insert into Employee values (?, ?, ?);";
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -146,6 +161,9 @@ public class ExpressDAO {
     public static int addHub(String name, String location) {
         int result = 0;
         try {
+            if (name == null || location == null) {
+                return 0;
+            }
             Connection conn = JDBCTool.getConnection();
             String sql = "insert into Hub values (?, ?, ?);";
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -165,11 +183,15 @@ public class ExpressDAO {
     public static int addRequest(String id, String senderAd, String receiverAd, String senderID, String receiverID, String content, String company, Timestamp timestamp) {
         int result = 0;
         try {
-            Connection conn = JDBCTool.getConnection();
             Sender sender = getSenderByNumber(senderID);
             Receiver receiver = getReceiverByNumber(receiverID);
             String pickup_address = sender.getAddress();
             String ship_address = receiver.getAddress();
+
+            if (id == null || content == null || receiverID == null || senderID == null || timestamp == null || sender == null || receiver == null || pickup_address == null || ship_address == null || sender.getHub() == null || receiver.getHub() == null) {
+                return 0;
+            }
+            Connection conn = JDBCTool.getConnection();
             String sql = "insert into Express values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, id);
@@ -209,6 +231,9 @@ public class ExpressDAO {
     public static int addCompany(String name, String phone, String email) {
         int result = 0;
         try {
+            if (name == null || phone == null || email == null) {
+                return 0;
+            }
             Connection conn = JDBCTool.getConnection();
             String sql = "insert into Company values (?, ?, ?);";
             PreparedStatement ps = conn.prepareStatement(sql);
