@@ -492,6 +492,30 @@ public class ExpressDAO {
         return result;
     }
 
+    public static ArrayList<Hub> getAllHub() {
+
+        ArrayList<Hub> arrayList = new ArrayList<>();
+        try {
+            Connection conn = JDBCTool.getConnection();
+            String sql = "SELECT * FROM Hub;";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String id = rs.getString("id");
+                String name = rs.getString("name");
+                String location = rs.getString("location");
+                Hub hub = new Hub(id, name, location);
+                arrayList.add(hub);
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return arrayList;
+    }
+
     public static Employee getEmployeeByNumber(String number) {
         Employee result = new Employee();
 
