@@ -137,18 +137,20 @@ public class ExpressDAO {
         return result;
     }
 
-    public static int addEmployee(String e_id, String hub_id, String c_name) {
+    public static int addEmployee(String e_id, String hub_id, String c_name, String password, String e_name) {
         int result = 0;
         try {
             if (e_id == null || hub_id == null || c_name == null) {
                 return 0;
             }
             Connection conn = JDBCTool.getConnection();
-            String sql = "insert into Employee values (?, ?, ?);";
+            String sql = "insert into Employee values (?, ?, ?, ?, ?);";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, e_id);
             ps.setString(2, hub_id);
             ps.setString(3, c_name);
+            ps.setString(4, password);
+            ps.setString(5, e_name);
             result = ps.executeUpdate();
             ps.close();
             conn.close();

@@ -27,9 +27,9 @@ public class Test {
         System.out.println(ExpressDAO.addRequest(ExpressDAO.generateID(), "Beijing HaiDian Peking University", "Hangzhou ChunJiang Road", "16463", "29443", "Another package", "SHUNFENG", timestamp));
     }
 
-    private static void addEmployee() {
-        System.out.println(ExpressDAO.addEmployee(ExpressDAO.generateID(), "45069", "SHUNFENG"));
-    }
+//    private static void addEmployee() {
+//        System.out.println(ExpressDAO.addEmployee(ExpressDAO.generateID(), "45069", "SHUNFENG"));
+//    }
 
     private static void addRoutine() {
         System.out.println(ExpressDAO.addRoutine("45069", "7764", "45069", "58634"));
@@ -37,13 +37,14 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        ArrayList<Status> statuses = ExpressDAO.getStatusByExpressId("13049");
-        System.out.println(statuses.size());
-        System.out.println(statuses.get(0).time.toString());
-
-        System.out.println(statuses.get(1).time.toString());
-
-        System.out.println(ExpressDAO.getHubById("45069").getLocation());
+        System.out.println(ExpressDAO.addEmployee("8234", "58634", "SHUNFENG", "123456", "YUEDONG"));
+//        ArrayList<Status> statuses = ExpressDAO.getStatusByExpressId("13049");
+//        System.out.println(statuses.size());
+//        System.out.println(statuses.get(0).time.toString());
+//
+//        System.out.println(statuses.get(1).time.toString());
+//
+//        System.out.println(ExpressDAO.getHubById("45069").getLocation());
 //        addRequest();
 //        ExpressDAO.addRoutine("45069", "58634", "7764", "58634");
 //        System.out.println(ExpressDAO.getExpressBySenderId("16463").length);
