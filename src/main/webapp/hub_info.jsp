@@ -11,11 +11,22 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="hub_info.css">
 </head>
 <body>
+<nav id='menu'>
+    <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+    <ul>
+        <li><a href='./fill_info.html'>Add Request</a></li>
+        <li><a href='./search.html'>Search Request</a></li>
+        <li><a href='./Update.html'>Update</a></li>
+        <li class="login"><a href='./login.html'>Log In</a></li>
+    </ul>
+</nav>
 
 <div class="hubResult">
     <%
+        out.println("<h1>Hub ID & Hub Information </h1>");
         ArrayList<Hub> arrayList = ExpressDAO.getAllHub();
         out.println("<ul>");
         for (int i = 0; i < arrayList.size(); ++i) {
